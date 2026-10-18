@@ -2,6 +2,7 @@
 
 P0 (implemented): unified settings for money, quantity, moisture, dryness; 0–6 decimal places; per-column overrides; display only.
 P1 (implemented core): Smart Filter V12 typed query AST with AND/OR, operator allowlist, permission scope, deterministic pagination.
+P1b (implemented): period lock — locked / retro / none for closed periods (src/period-lock.js). Shared screen/Excel/PDF row snapshot lives in HAK_SMART_FILTER v1.1 (createSnapshot).
 P2 (planned): XLSX/PDF report engines with layout measurement, page break rules, Vietnamese fonts, print presets, export parity.
 P3 (planned): visual report designer with permissions, schema migrations, audit trail and template versions.
 

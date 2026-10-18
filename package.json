@@ -1,6 +1,6 @@
 {
   "name": "@hak/accounting-report-standard",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": false,
   "description": "Vietnamese accounting formatting and report layout standard",
   "main": "src/index.js",

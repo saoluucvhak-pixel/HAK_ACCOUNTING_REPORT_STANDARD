@@ -40,4 +40,5 @@ function validateColumns(columns) {
   });
 }
 const {formatExact} = require('./exact-format');
-module.exports = {formatNumber,formatExact,formatVND,formatDateISO,alignFor,validateColumns};
+const periodLock = require('./period-lock');
+module.exports = {formatNumber,formatExact,formatVND,formatDateISO,alignFor,validateColumns,periodLock};
