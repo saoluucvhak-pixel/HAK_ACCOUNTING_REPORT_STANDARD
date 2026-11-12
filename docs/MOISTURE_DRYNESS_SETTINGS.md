@@ -10,3 +10,6 @@
 - Bảng hệ thống: `money`, `quantity`, `moisture`, `dryness`; cài đặt theo nhóm hoặc ghi đè theo từng cột; áp dụng nhất quán màn hình/Excel/PDF/in.
 - Khi xuất Excel, lưu ô tỷ lệ dưới dạng số thực với format phù hợp; nếu lưu 42.5 thì dùng format số + ký hiệu % literal, **không dùng** format percent nhân 100 của Excel. Nếu lưu 0.425 thì dùng format percent chuẩn; không được trộn hai quy ước.
 - Thay đổi độ chính xác là thay đổi hiển thị, không được thay đổi dữ liệu gốc, tỷ lệ đo hay kết quả tính kho.
+
+## Độ ngậm / độ khô
+`drynessFromMoisture(m)` trả `100 − m` đã làm tròn về 6 chữ số thập phân để tránh nhiễu dấu phẩy động (ví dụ 100 − 8,04 = 91,96 chứ không phải 91,96000000000001).
