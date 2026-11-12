@@ -20,6 +20,7 @@ function formatPercent(value,settings={},type='moisture',columnKey){
 }
 function drynessFromMoisture(moisture){
  if(typeof moisture!=='number'||!Number.isFinite(moisture)||moisture<0||moisture>100)throw new RangeError('Moisture must be in 0..100');
- return 100-moisture;
+ // 100 - x trong số thực nhị phân sinh nhiễu (100-8.04 = 91.96000000000001): làm tròn về 6 chữ số thập phân (tối đa độ chính xác cấu hình 0..6).
+ return Math.round((100-moisture)*1e6)/1e6;
 }
 module.exports={normalizeMoistureSettings,formatPercent,drynessFromMoisture};
