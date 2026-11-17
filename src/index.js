@@ -8,8 +8,10 @@ function formatNumber(value, { maxDecimals = 2, minDecimals = 0 } = {}) {
   if (!Number.isInteger(maxDecimals) || maxDecimals < 0 || maxDecimals > 20 || !Number.isInteger(minDecimals) || minDecimals < 0 || minDecimals > maxDecimals) throw new RangeError('Invalid precision');
   const key = minDecimals + ':' + maxDecimals;
   if (!numberFormats.has(key)) numberFormats.set(key, new Intl.NumberFormat('vi-VN', {useGrouping:true,minimumFractionDigits:minDecimals,maximumFractionDigits:maxDecimals}));
-  return numberFormats.get(key).format(value);
+  return noNegativeZero(numberFormats.get(key).format(value));
 }
+// Số âm làm tròn về 0 hiển thị "0" / "0,00" (không "-0"): báo cáo kế toán không có số 0 âm. formatExact đã xử lý đúng từ trước.
+function noNegativeZero(text) { return /^-0(?:,0+)?$/.test(text) ? text.slice(1) : text; }
 function formatVND(value) { return formatNumber(value, {maxDecimals:0}); }
 function formatDateISO(value) {
   if (value === null || value === undefined || value === '') return '';
@@ -40,4 +42,4 @@ function validateColumns(columns) {
   });
 }
 const {formatExact} = require('./exact-format');
-module.exports = {formatNumber,formatExact,formatVND,formatDateISO,alignFor,validateColumns};
+module.exports = {noNegativeZero,formatNumber,formatExact,formatVND,formatDateISO,alignFor,validateColumns};
