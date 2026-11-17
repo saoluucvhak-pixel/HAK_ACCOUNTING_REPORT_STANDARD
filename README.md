@@ -30,3 +30,12 @@ F.validateColumns([{key:'amount',label:'Số tiền',type:'money'}]);
 ## Scope
 This release is a standalone **formatting foundation**, not yet a PDF/XLSX renderer. Report layout, export parity and visual-regression rules are specified in the skill but require implementing adapters and tests.
 
+
+
+## Bản dùng cho trình duyệt
+
+`dist/hak-report-standard.js` được **tự sinh** từ `src/` (cùng một mã) bằng `npm run build`; `npm run check:dist` và test báo lỗi nếu `dist` lệch `src`.
+- Trình duyệt / Electron renderer: `<script src="hak-report-standard.js">` → `window.HAKReport.formatNumber(...)`, `formatVND`, `formatExact`, `formatDateISO`, `formatConfigured`, …
+- Node: `require('@hak/accounting-report-standard/dist/hak-report-standard.js')` cho kết quả như `require('.../src')`.
+
+Quy ước hiển thị: số âm làm tròn về 0 hiển thị `0` / `0,00` (không `-0`).

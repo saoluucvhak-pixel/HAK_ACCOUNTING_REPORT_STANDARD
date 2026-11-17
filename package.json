@@ -6,9 +6,12 @@
   "main": "src/index.js",
   "type": "commonjs",
   "scripts": {
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "build": "node scripts/build-browser.js",
+    "check:dist": "node scripts/build-browser.js --check"
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "browser": "dist/hak-report-standard.js"
 }
